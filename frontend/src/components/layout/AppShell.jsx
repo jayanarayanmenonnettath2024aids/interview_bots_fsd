@@ -87,7 +87,7 @@ export default function AppShell() {
         </aside>
 
         <div className="flex min-w-0 flex-1 flex-col gap-6">
-          <header className="card-glass flex flex-wrap items-center justify-between gap-4 rounded-[28px] px-5 py-4">
+          <header className="card-glass relative z-40 flex flex-wrap items-center justify-between gap-4 overflow-visible rounded-[28px] px-5 py-4">
             <div className="flex min-w-[280px] flex-1 items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3">
               <Search className="h-4 w-4 text-slate-400" />
               <Input className="h-auto border-0 bg-transparent p-0 shadow-none focus:ring-0" placeholder="Search interviews, skills, questions..." />
@@ -97,7 +97,7 @@ export default function AppShell() {
               <button className="flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 transition hover:border-brand-200 hover:text-brand-600">
                 <Bell className="h-4 w-4" />
               </button>
-              <div className="relative" ref={accountMenuRef}>
+              <div className="relative z-50" ref={accountMenuRef}>
                 <button
                   type="button"
                   onClick={() => setAccountMenuOpen((open) => !open)}
@@ -116,7 +116,7 @@ export default function AppShell() {
                 </button>
 
                 {accountMenuOpen && (
-                  <div className="absolute right-0 top-[calc(100%+0.75rem)] z-50 w-64 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl">
+                  <div className="absolute right-0 top-[calc(100%+0.75rem)] z-[60] w-64 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl">
                     <div className="border-b border-slate-100 px-4 py-3">
                       <div className="text-sm font-semibold text-slate-900">{user?.name || 'Alex Johnson'}</div>
                       <div className="text-xs text-slate-500">{user?.email || 'Student'}</div>
@@ -158,7 +158,7 @@ export default function AppShell() {
             </div>
           </header>
 
-          <main className="min-h-0 flex-1">{location.pathname ? <Outlet /> : null}</main>
+          <main className="relative z-0 min-h-0 flex-1">{location.pathname ? <Outlet /> : null}</main>
         </div>
       </div>
     </div>
